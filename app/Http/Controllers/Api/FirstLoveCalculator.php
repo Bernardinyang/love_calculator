@@ -1,22 +1,15 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Controllers\Api;
 
-use Livewire\Component;
+use JetBrains\PhpStorm\Pure;
 
-class LoveCalculator extends Component
+class FirstLoveCalculator
 {
-    public string $her_name = "";
-    public string $his_name = "";
     public int $score = 0;
     private string $love = "love";
 
-    public function render()
-    {
-        return view('livewire.love-calculator');
-    }
-
-    private static function findSum(int $no)
+    private function findSum(int $no): int
     {
         $sum = 0;
         while ($no > 0) {
@@ -26,14 +19,13 @@ class LoveCalculator extends Component
         return $sum;
     }
 
-    public function calculate()
+    #[Pure] public function calculatePercentage(string $his_name, string $her_name): int
     {
         $firstSum = 0;
         $secondSum = 0;
         $loveSum = 0;
-        $totalSum = 0;
-        $his_name = strtolower($this->his_name);
-        $her_name = strtolower($this->her_name);
+        $his_name = strtolower($his_name);
+        $her_name = strtolower($her_name);
 
         for ($i = 0; $i < strlen($his_name); $i++) {
             $firstSum += ord($his_name[$i]);
@@ -54,6 +46,6 @@ class LoveCalculator extends Component
             $totalSum = $loveSum - ($totalSum - $loveSum);
         }
 
-        $this->score = $totalSum * 100 / $loveSum;
+        return $totalSum * 100 / $loveSum;
     }
 }

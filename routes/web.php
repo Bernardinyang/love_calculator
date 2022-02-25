@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CalculateLove;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +12,3 @@ use App\Http\Controllers\CalculateLove;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [CalculateLove::class, 'index']);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CalculateLove;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+Route::get('/calculate-love/{her_name}/{his_name}', [CalculateLove::class, "index"]);
